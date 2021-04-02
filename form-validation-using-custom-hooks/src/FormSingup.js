@@ -1,8 +1,9 @@
 import React from 'react'
 import useForm from './useFrom'
 import validate from './validateInfo'
+import './Form.css'
 
-const FormSingup = () => {
+const FormSingup = ({ submitForm }) => {
     const { handleChange, values, handleSubmit, errors } = useForm(validate);
 
     return (
@@ -25,6 +26,7 @@ const FormSingup = () => {
                     </label>
                     <input id="email" type="email" name="email" className="form-input" placeholder="Enter your email"
                         value={values.email} onChange={handleChange} />
+                    {errors.email && <p>{errors.email}</p>}
                 </div>
 
                 <div className="form-inputs">
@@ -33,6 +35,7 @@ const FormSingup = () => {
                     </label>
                     <input id="password" type="password" name="password" className="form-input" placeholder="Enter your password"
                         value={values.password} onChange={handleChange} />
+                    {errors.password && <p>{errors.password}</p>}
                 </div>
 
                 <div className="form-inputs">
@@ -41,9 +44,10 @@ const FormSingup = () => {
                     </label>
                     <input id="password2" type="password" name="password2" className="form-input" placeholder="Confirm password"
                         value={values.password2} onChange={handleChange} />
+                    {errors.password2 && <p>{errors.password2}</p>}
                 </div>
 
-                <button className="form-input-btn" type="submit"> Sing up </button>
+                <button className="form-input-btn" type="submit" onClick = {submitForm}> Sing up </button>
                 <span className="form-input-login"> Already have an acoount? Login <a href="#">here</a> ! </span>
 
             </form>

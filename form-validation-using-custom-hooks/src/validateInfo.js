@@ -18,8 +18,8 @@ export default function validateInfo(values) {
         errors.password = "Password needs to be at least 6 characters!"
     }
 
-    if (!values.password2 || (!values.password !== values.password2)) {
-        errors.password = "Passwords do not match!"
+    if (!values.password2 || values.password !== values.password2) {
+        errors.password2 = "Passwords do not match!"
     }
 
     return errors;
